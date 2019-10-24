@@ -23,6 +23,7 @@ jobs:
           weasyprint https://weasyprint.org/ weasyprint.pdf
       - name: Commit files
         run: |
+          git add .
           git commit -m "Created pdfs" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
