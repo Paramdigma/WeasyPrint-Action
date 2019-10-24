@@ -18,8 +18,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout gh-pages
-          git merge origin/master
+
           mkdir docs/ | true
           weasyprint https://weasyprint.org/ docs/weasyprint.pdf
       - name: Commit files
@@ -30,5 +29,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          force: true
