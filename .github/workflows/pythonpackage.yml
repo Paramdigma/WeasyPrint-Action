@@ -17,7 +17,7 @@ jobs:
       - name: Create pdf's
         run: |
           git checkout gh-pages
-          git merge master 
+          git merge origin/master
           weasyprint https://weasyprint.org/ weasyprint.pdf
       - name: Commit files
         run: |
