@@ -14,7 +14,15 @@ jobs:
         run: |
           sudo apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
           sudo python3 -m pip install WeasyPrint
-      - name: Test everything
+      - name: Create pdf's
         run: |
-          git --version
-          weasyprint --version
+          git checkout gh-pages
+          git merge master 
+          weasyprint https://weasyprint.org/ weasyprint.pdf
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Created pdfs" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
