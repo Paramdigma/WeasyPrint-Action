@@ -16,13 +16,13 @@ jobs:
           sudo python3 -m pip install WeasyPrint
       - name: Create pdf's
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git checkout gh-pages
           git merge origin/master
           weasyprint https://weasyprint.org/ weasyprint.pdf
       - name: Commit files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git commit -m "Created pdfs" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
