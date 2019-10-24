@@ -4,16 +4,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7]
-
     steps:
     - uses: actions/checkout@v1
-    - name: Install weasyprint
+    - name: Install weasyprint dependencies
       run: |
         sudo apt-get install \
         build-essential \
@@ -28,3 +22,11 @@ jobs:
         libgdk-pixbuf2.0-0 \
         libffi-dev \
         shared-mime-info
+    - name: Install weasyprint
+      run: pip install Weasyprint
+    - name: Install Git
+      run: apt-get install git-core
+    - name: Test everything
+      run: |
+        weasyprint --version
+        git --version
