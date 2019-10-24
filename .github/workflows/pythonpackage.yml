@@ -13,7 +13,7 @@ jobs:
       - name: Install weasyprint
         run: python3 -m pip install Weasyprint
       - name: Install Git
-        run: apt-get install git-core
+        run: sudo apt-get install git-core
       - name: Test everything
         run: |
           weasyprint --version
