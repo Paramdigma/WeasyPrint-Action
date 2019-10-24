@@ -20,7 +20,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout gh-pages
           git merge origin/master
-          weasyprint https://weasyprint.org/ weasyprint.pdf
+          mkdir docs/ | true
+          weasyprint https://weasyprint.org/ docs/weasyprint.pdf
       - name: Commit files
         run: |
           git add .
